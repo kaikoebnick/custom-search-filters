@@ -82,6 +82,23 @@ class Object(Schema):
         description='Date of the object-creation.',
     )
 
+    group = Quantity(
+        type=MEnum('laserphysics group'),
+        shape= ['*'],
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity
+        ),
+        description="Group of useres that can edit this entry.",
+    )
+
+    coa = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.StringEditQuantity
+        ),
+        description="Coautohor.",
+    )
+
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape= ['0..*'],
@@ -124,9 +141,7 @@ class Object(Schema):
         logger.info(f"Set elements to {self.material}")
 
         if not archive.results.eln: # make laserphysics_id searchable
-            archive.results.eln = ELN(
-                a_display={'visible': False, 'editable': False}
-                )
+            archive.results.eln = ELN()
         archive.results.eln.lab_ids = [self.laserphysics_id]
         logger.info(f"Set lab_ids to {self.laserphysics_id}")
 
@@ -143,6 +158,9 @@ class Object(Schema):
             archive.metadata.entry_name = a
             self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
+
+        #if self.group == 'laserphysics group':
+        archive.metadata.coauthors = [self.coa]
 
 
 
