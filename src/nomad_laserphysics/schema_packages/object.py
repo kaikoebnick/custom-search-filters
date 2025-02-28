@@ -82,23 +82,6 @@ class Object(Schema):
         description='Date of the object-creation.',
     )
 
-    group = Quantity(
-        type=MEnum('laserphysics group'),
-        shape= ['*'],
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity
-        ),
-        description="Group of useres that can edit this entry.",
-    )
-
-    coa = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity
-        ),
-        description="Coautohor.",
-    )
-
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape= ['0..*'],
@@ -158,9 +141,6 @@ class Object(Schema):
             archive.metadata.entry_name = a
             self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
-
-        #if self.group == 'laserphysics group':
-        archive.metadata.coauthors = [self.coa]
 
 
 
