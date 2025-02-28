@@ -76,7 +76,7 @@ Objects = App(
                 title='basic data',
                 items=[
                     MenuItemHistogram(
-                        title='date of the last update',
+                        title='date',
                         x='upload_create_time',
                     ),
                     MenuItemTerms(

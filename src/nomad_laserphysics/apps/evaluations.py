@@ -70,7 +70,7 @@ Evaluations = App(
         title='filter-menu',
         items=[
             MenuItemHistogram(
-                title='date of the last update',
+                title='date',
                 x='upload_create_time',
             ),
             MenuItemTerms(
