@@ -44,7 +44,7 @@ else:
     }
 
 Objects = App(
-    label='Object app',
+    label='Objects app',
     description='Search Laserphysics objects',
     path='objects',
     category='Chair for Laserphysics',

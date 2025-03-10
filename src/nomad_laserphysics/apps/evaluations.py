@@ -33,23 +33,26 @@ if upload_ids:
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
             'nomad_laserphysics.schema_packages.evaluation.Evaluation',
+            'nomad_laserphysics.schema_packages.ML_evaluation_procedure.MLEvaluationProcedure',
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
            'nomad_laserphysics.schema_packages.evaluation.Evaluation',
+           'nomad_laserphysics.schema_packages.ML_evaluation_procedure.MLEvaluationProcedure',
         ]
     }
 
 Evaluations = App(
-    label='Evaluation app',
+    label='Evaluations app',
     description='Search Laserphysics evaluations',
     path='evaluations',
     category='Chair for Laserphysics',
     filters=Filters(
         include=[
             '*#nomad_laserphysics.schema_packages.evaluation.Evaluation',
+            '*#nomad_laserphysics.schema_packages.ML_evaluation_procedure.MLEvaluationProcedure',
             ],
     ),
     filters_locked=filters_locked,
